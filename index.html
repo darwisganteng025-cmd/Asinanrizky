@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Asinan Rizky Bogor — Segar, Pedas, Khas Bogor</title>
+<meta name="description" content="Asinan Rizky Bogor. Segar, Pedas, Khas Bogor. Pesan sekarang lewat Shopee, TikTok Shop, GrabFood, GoFood, ShopeeFood, atau WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B0B0B;
+    --bg-raise:#151512;
+    --bg-raise-2:#1B1B17;
+    --glass:rgba(255,255,255,0.05);
+    --glass-border:rgba(255,255,255,0.09);
+    --green:#B7E4A8;
+    --lime:#D9FF74;
+    --white:#FFFFFF;
+    --muted:#A0A0A0;
+    --chili:#FF6B4A;
+    --deep-green:#5C8C4E;
+    --radius-lg:28px;
+    --radius-md:20px;
+    --radius-sm:14px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--white);
+    font-family:'Plus Jakarta Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    padding-bottom:92px;
+  }
+  h1,h2,h3,.display{
+    font-family:'Bricolage Grotesque', sans-serif;
+    letter-spacing:-0.02em;
+  }
+  a{color:inherit; text-decoration:none;}
+  img,svg{display:block; max-width:100%;}
+  .wrap{
+    max-width:560px;
+    margin:0 auto;
+    padding:0 20px;
+    position:relative;
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:12.5px;
+    font-weight:700;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--green);
+  }
+  .eyebrow::before{
+    content:"";
+    width:6px; height:6px;
+    border-radius:50%;
+    background:var(--lime);
+    box-shadow:0 0 10px var(--lime);
+  }
+
+  /* ---------- ambient background ---------- */
+  .bg-glow{
+    position:fixed; inset:0;
+    z-index:0;
+    pointer-events:none;
+    background:
+      radial-gradient(480px 420px at 15% -5%, rgba(183,228,168,0.16), transparent 60%),
+      radial-gradient(420px 380px at 100% 18%, rgba(217,255,116,0.10), transparent 60%),
+      radial-gradient(500px 500px at 50% 78%, rgba(183,228,168,0.08), transparent 65%);
+  }
+  .noise{
+    position:fixed; inset:0; z-index:1; pointer-events:none; opacity:0.05; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  main, header, footer, section{position:relative; z-index:2;}
+
+  /* ---------- reveal on scroll ---------- */
+  .reveal{opacity:0; transform:translateY(22px); transition:opacity .7s cubic-bezier(.22,.9,.3,1), transform .7s cubic-bezier(.22,.9,.3,1);}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* ================= HERO ================= */
+  .hero{
+    padding:26px 0 40px;
+    text-align:center;
+  }
+  .logo-row{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding-top:6px;
+    margin-bottom:28px;
+  }
+  .logo-mark{
+    width:34px; height:34px;
+    border-radius:10px;
+    background:linear-gradient(145deg, var(--lime), var(--green));
+    display:flex; align-items:center; justify-content:center;
+    font-weight:800; color:#0B0B0B; font-size:16px;
+    font-family:'Bricolage Grotesque', sans-serif;
+    box-shadow:0 6px 18px rgba(217,255,116,0.25);
+  }
+  .logo-word{font-size:14.5px; font-weight:700; letter-spacing:0.02em; color:var(--muted);}
+  .logo-word b{color:var(--white); font-weight:700;}
+
+  .hero-stage{
+    position:relative;
+    width:250px; height:250px;
+    margin:6px auto 26px;
+  }
+  .hero-ring{
+    position:absolute; inset:0;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, rgba(183,228,168,0.22), rgba(11,11,11,0) 65%);
+    border:1px solid var(--glass-border);
+    animation:pulse 5s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{transform:scale(1); opacity:1;}
+    50%{transform:scale(1.035); opacity:0.85;}
+  }
+  .bowl{
+    position:absolute; inset:26px;
+    border-radius:50%;
+    background:
+      radial-gradient(circle at 32% 28%, rgba(255,255,255,0.5), transparent 30%),
+      linear-gradient(160deg, #E7C88A 0%, #C99A4E 55%, #9E7434 100%);
+    box-shadow:0 22px 40px -14px rgba(0,0,0,0.6), inset 0 -8px 18px rgba(0,0,0,0.25);
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+  }
+  .bowl::before{
+    content:"🥗";
+    font-size:78px;
+    filter:drop-shadow(0 6px 10px rgba(0,0,0,0.35));
+    transform:translateY(4px);
+  }
+  .garnish{
+    position:absolute;
+    font-size:26px;
+    filter:drop-shadow(0 6px 10px rgba(0,0,0,0.4));
+    animation:float 4.5s ease-in-out infinite;
+  }
+  .g1{top:2%; left:4%; animation-delay:0s;}
+  .g2{bottom:6%; right:0%; font-size:22px; animation-delay:1.1s;}
+  .g3{top:12%; right:8%; font-size:20px; animation-delay:2s;}
+  @keyframes float{
+    0%,100%{transform:translateY(0) rotate(0deg);}
+    50%{transform:translateY(-9px) rotate(6deg);}
+  }
+  .stamp{
+    position:absolute;
+    bottom:-10px; left:-14px;
+    width:78px; height:78px;
+    border-radius:50%;
+    background:var(--bg-raise);
+    border:1.5px dashed var(--lime);
+    display:flex; align-items:center; justify-content:center;
+    animation:spin 16s linear infinite;
+  }
+  .stamp svg{width:100%; height:100%;}
+  @media (prefers-reduced-motion: reduce){
+    .stamp, .hero-ring, .garnish{animation:none;}
+  }
+  @keyframes spin{to{transform:rotate(360deg);}}
+
+  .brand-name{
+    font-size:34px;
+    font-weight:800;
+    line-height:1.08;
+    margin-bottom:10px;
+  }
+  .brand-name .accent{color:var(--lime);}
+  .tagline{
+    font-size:16px;
+    color:var(--green);
+    font-weight:600;
+    margin-bottom:8px;
+    letter-spacing:0.01em;
+  }
+  .subcopy{
+    font-size:14.5px;
+    color:var(--muted);
+    max-width:320px;
+    margin:0 auto 26px;
+    line-height:1.55;
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:16px 30px;
+    border-radius:100px;
+    font-weight:700;
+    font-size:15px;
+    cursor:pointer;
+    border:none;
+    transition:transform .25s cubic-bezier(.22,.9,.3,1), box-shadow .25s ease;
+  }
+  .btn-primary{
+    background:linear-gradient(120deg, var(--lime), var(--green));
+    color:#0B0B0B;
+    box-shadow:0 10px 26px -8px rgba(217,255,116,0.45);
+  }
+  .btn-primary:active{transform:scale(0.96);}
+  .btn-primary svg{width:16px; height:16px;}
+
+  .scroll-cue{
+    margin-top:22px;
+    font-size:11px;
+    color:var(--muted);
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    display:flex; flex-direction:column; align-items:center; gap:6px;
+  }
+  .scroll-cue span{
+    width:1px; height:22px;
+    background:linear-gradient(var(--green), transparent);
+    animation:down 1.8s ease-in-out infinite;
+  }
+  @keyframes down{0%{opacity:0; transform:translateY(-6px);}50%{opacity:1;}100%{opacity:0; transform:translateY(6px);}}
+
+  /* ================= SECTION GENERIC ================= */
+  section{padding:54px 0 6px;}
+  .section-head{margin-bottom:20px;}
+  .section-title{
+    font-size:23px;
+    font-weight:800;
+    margin-top:8px;
+  }
+  .section-sub{
+    font-size:14px;
+    color:var(--muted);
+    margin-top:6px;
+  }
+
+  /* ================= PROMO ================= */
+  .promo-card{
+    position:relative;
+    border-radius:var(--radius-lg);
+    padding:4px;
+    background:linear-gradient(135deg, rgba(183,228,168,0.5), rgba(217,255,116,0.15) 40%, rgba(255,255,255,0.04));
+  }
+  .promo-inner{
+    border-radius:calc(var(--radius-lg) - 4px);
+    background:linear-gradient(160deg, var(--bg-raise-2), var(--bg-raise) 70%);
+    padding:26px 22px 22px;
+    position:relative;
+    overflow:hidden;
+    clip-path: polygon(0% 1.5%, 4% 0%, 9% 1.2%, 15% 0.2%, 21% 1.4%, 27% 0.1%, 33% 1.1%, 39% 0.3%, 45% 1.3%, 51% 0.2%, 57% 1.2%, 63% 0.1%, 69% 1.4%, 75% 0.3%, 81% 1.2%, 87% 0.2%, 93% 1.3%, 100% 0%, 100% 100%, 0% 100%);
+  }
+  .promo-tag{
+    display:inline-block;
+    background:var(--lime);
+    color:#0B0B0B;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    padding:6px 12px;
+    border-radius:100px;
+    margin-bottom:16px;
+  }
+  .promo-poster{
+    width:100%;
+    aspect-ratio:16/10;
+    border-radius:var(--radius-md);
+    background:
+      repeating-linear-gradient(135deg, rgba(255,255,255,0.035) 0 2px, transparent 2px 14px),
+      linear-gradient(150deg, #23231d, #14140f 70%);
+    border:1px dashed var(--glass-border);
+    display:flex; align-items:center; justify-content:center;
+    flex-direction:column;
+    gap:6px;
+    margin-bottom:16px;
+    color:var(--muted);
+    font-size:12.5px;
+    text-align:center;
+    padding:20px;
+  }
+  .promo-poster svg{width:30px; height:30px; opacity:0.6; margin-bottom:4px;}
+  .promo-title{font-size:20px; font-weight:800; margin-bottom:6px; color:var(--white);}
+  .promo-desc{font-size:14px; color:var(--muted); line-height:1.55; margin-bottom:18px;}
+  .promo-cta{width:100%;}
+
+  /* ================= BENTO ORDER GRID ================= */
+  .bento{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:12px;
+  }
+  .bento-card{
+    grid-column:span 1;
+    border-radius:var(--radius-md);
+    padding:18px 16px;
+    background:var(--glass);
+    border:1px solid var(--glass-border);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    gap:22px;
+    min-height:130px;
+    position:relative;
+    overflow:hidden;
+    transition:transform .3s cubic-bezier(.22,.9,.3,1), border-color .3s ease, background .3s ease;
+  }
+  .bento-card:active{transform:scale(0.965);}
+  .bento-card.wide{grid-column:span 2;}
+  .bento-glow{
+    position:absolute; top:-30px; right:-30px;
+    width:100px; height:100px;
+    border-radius:50%;
+    filter:blur(24px);
+    opacity:0.5;
+    transition:opacity .3s ease;
+  }
+  .bento-card:hover .bento-glow{opacity:0.85;}
+  .bento-icon{
+    width:42px; height:42px;
+    border-radius:12px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:19px;
+    font-weight:800;
+    color:#0B0B0B;
+  }
+  .bento-icon svg{width:22px; height:22px;}
+  .bento-name{font-size:15px; font-weight:700; margin-bottom:2px;}
+  .bento-meta{font-size:12px; color:var(--muted);}
+  .bento-arrow{
+    position:absolute; top:16px; right:16px;
+    width:28px; height:28px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.06);
+    display:flex; align-items:center; justify-content:center;
+    transition:transform .3s ease, background .3s ease;
+  }
+  .bento-card:hover .bento-arrow{transform:translate(2px,-2px); background:rgba(255,255,255,0.12);}
+  .bento-arrow svg{width:13px; height:13px;}
+
+  /* platform accents */
+  .c-shopee{--accent:#EE4D2D;}
+  .c-tiktok{--accent:#25F4EE;}
+  .c-grab{--accent:#00B14F;}
+  .c-gofood{--accent:#5ED47A;}
+  .c-shopeefood{--accent:#FF5C35;}
+  .c-wa{--accent:#25D366;}
+  .bento-icon{background:var(--accent);}
+  .bento-glow{background:var(--accent);}
+  .c-tiktok .bento-icon{color:#111;}
+
+  /* ================= MENU SCROLLER ================= */
+  .menu-scroll{
+    display:flex;
+    gap:14px;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    padding:6px 0 18px;
+    margin:0 -20px;
+    padding-left:20px;
+    padding-right:20px;
+    -webkit-overflow-scrolling:touch;
+  }
+  .menu-scroll::-webkit-scrollbar{display:none;}
+  .menu-card{
+    scroll-snap-align:start;
+    flex:0 0 76%;
+    max-width:250px;
+    border-radius:var(--radius-md);
+    background:var(--bg-raise);
+    border:1px solid var(--glass-border);
+    overflow:hidden;
+  }
+  .menu-photo{
+    width:100%;
+    aspect-ratio:1/1;
+    background:
+      radial-gradient(circle at 30% 25%, rgba(255,255,255,0.12), transparent 45%),
+      linear-gradient(150deg, #2a2a20, #16160f);
+    display:flex; align-items:center; justify-content:center;
+    font-size:56px;
+    position:relative;
+  }
+  .menu-badge{
+    position:absolute; top:10px; left:10px;
+    background:var(--lime);
+    color:#0B0B0B;
+    font-size:10.5px;
+    font-weight:800;
+    letter-spacing:0.03em;
+    padding:5px 10px;
+    border-radius:100px;
+    text-transform:uppercase;
+  }
+  .menu-body{padding:14px 16px 18px;}
+  .menu-name{font-size:15.5px; font-weight:700; margin-bottom:4px;}
+  .menu-desc{font-size:12.5px; color:var(--muted); line-height:1.5; margin-bottom:12px; min-height:38px;}
+  .menu-foot{display:flex; align-items:center; justify-content:space-between;}
+  .menu-price{font-size:15px; font-weight:800; color:var(--green);}
+  .menu-add{
+    width:32px; height:32px;
+    border-radius:50%;
+    background:var(--lime);
+    color:#0B0B0B;
+    display:flex; align-items:center; justify-content:center;
+    font-weight:800;
+    font-size:17px;
+    border:none;
+  }
+
+  /* ================= REVIEWS ================= */
+  .review-scroll{
+    display:flex; gap:12px; overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    margin:0 -20px; padding:4px 20px 10px;
+    -webkit-overflow-scrolling:touch;
+  }
+  .review-scroll::-webkit-scrollbar{display:none;}
+  .review-card{
+    scroll-snap-align:start;
+    flex:0 0 84%;
+    border-radius:var(--radius-md);
+    background:var(--glass);
+    border:1px solid var(--glass-border);
+    backdrop-filter:blur(14px);
+    padding:20px;
+  }
+  .stars{color:var(--lime); font-size:14px; letter-spacing:2px; margin-bottom:12px;}
+  .review-text{font-size:14px; color:#DEDEDE; line-height:1.6; margin-bottom:16px;}
+  .review-person{display:flex; align-items:center; gap:10px;}
+  .review-avatar{
+    width:34px; height:34px; border-radius:50%;
+    background:linear-gradient(145deg, var(--green), var(--deep-green));
+    display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:13px; color:#0B0B0B;
+  }
+  .review-name{font-size:13.5px; font-weight:700;}
+  .review-loc{font-size:11.5px; color:var(--muted);}
+
+  /* ================= SOCIAL ================= */
+  .social-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
+  .social-card{
+    border-radius:var(--radius-md);
+    padding:20px 16px;
+    background:var(--glass);
+    border:1px solid var(--glass-border);
+    text-align:center;
+    transition:transform .3s ease;
+  }
+  .social-card:active{transform:scale(0.96);}
+  .social-icon{width:36px; height:36px; margin:0 auto 12px;}
+  .social-handle{font-size:13.5px; font-weight:700; margin-bottom:2px;}
+  .social-sub{font-size:11.5px; color:var(--muted);}
+
+  footer{
+    text-align:center;
+    padding:50px 20px 20px;
+    color:#6B6B6B;
+    font-size:12px;
+    line-height:1.7;
+  }
+  footer b{color:var(--muted);}
+
+  /* ================= STICKY CTA ================= */
+  .sticky-cta{
+    position:fixed;
+    left:0; right:0; bottom:0;
+    z-index:50;
+    padding:12px 16px calc(14px + env(safe-area-inset-bottom));
+    background:linear-gradient(to top, rgba(11,11,11,0.98) 60%, rgba(11,11,11,0.85));
+    backdrop-filter:blur(10px);
+    border-top:1px solid var(--glass-border);
+  }
+  .sticky-inner{
+    max-width:560px; margin:0 auto;
+    display:flex; align-items:center; gap:12px;
+  }
+  .sticky-text{flex:1; min-width:0;}
+  .sticky-text .t1{font-size:12px; color:var(--muted);}
+  .sticky-text .t2{font-size:14.5px; font-weight:700; color:var(--white);}
+  .sticky-btn{
+    display:flex; align-items:center; gap:8px;
+    background:linear-gradient(120deg, var(--lime), var(--green));
+    color:#0B0B0B;
+    font-weight:800;
+    font-size:14px;
+    padding:13px 20px;
+    border-radius:100px;
+    white-space:nowrap;
+    box-shadow:0 8px 22px -8px rgba(217,255,116,0.5);
+  }
+  .sticky-btn svg{width:16px; height:16px;}
+
+  @media (min-width:600px){
+    .brand-name{font-size:40px;}
+    .bento-card.wide{grid-column:span 1;}
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-glow"></div>
+<div class="noise"></div>
+
+<!-- ================= HERO ================= -->
+<header class="hero wrap">
+  <div class="logo-row">
+    <div class="logo-mark">AR</div>
+    <div class="logo-word">Asinan <b>Rizky</b> Bogor</div>
+  </div>
+
+  <div class="hero-stage">
+    <div class="hero-ring"></div>
+    <div class="bowl"></div>
+    <span class="garnish g1">🌶️</span>
+    <span class="garnish g2">🍍</span>
+    <span class="garnish g3">🥭</span>
+    <div class="stamp" aria-hidden="true">
+      <svg viewBox="0 0 100 100">
+        <defs>
+          <path id="circlePath" d="M50,50 m-36,0 a36,36 0 1,1 72,0 a36,36 0 1,1 -72,0"/>
+        </defs>
+        <circle cx="50" cy="50" r="46" fill="none" stroke="#B7E4A8" stroke-width="1" opacity="0.4"/>
+        <text font-size="8.3" fill="#D9FF74" letter-spacing="2" font-family="Plus Jakarta Sans">
+          <textPath href="#circlePath" startOffset="0%">• ASLI BOGOR • RESEP KELUARGA •</textPath>
+        </text>
+      </svg>
+    </div>
+  </div>
+
+  <p class="eyebrow">Warung Asinan Sejak Dulu</p>
+  <h1 class="brand-name">Asinan Rizky<br><span class="accent">Bogor</span></h1>
+  <p class="tagline">Segar, Pedas, Khas Bogor</p>
+  <p class="subcopy">Racikan asinan asli Bogor — buah &amp; sayur segar disiram kuah asam pedas kacang yang bikin nagih di setiap suapan.</p>
+
+  <a href="#order" class="btn btn-primary">
+    Lihat Menu
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+  </a>
+
+  <div class="scroll-cue"><span></span>scroll</div>
+</header>
+
+<main>
+
+  <!-- ================= PROMO ================= -->
+  <section class="wrap reveal">
+    <div class="promo-card">
+      <div class="promo-inner">
+        <span class="promo-tag">Promo Minggu Ini</span>
+        <div class="promo-poster">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          Tempat poster promo / foto asinan
+        </div>
+        <div class="promo-title">Beli 2 Gratis Es Teh Manis</div>
+        <p class="promo-desc">Berlaku untuk pemesanan langsung via WhatsApp, khusus wilayah Bogor Kota. Stok terbatas tiap hari!</p>
+        <a href="#order" class="btn btn-primary promo-cta">Klaim Sekarang</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= QUICK ORDER BENTO ================= -->
+  <section class="wrap" id="order">
+    <div class="section-head reveal">
+      <p class="eyebrow">Pesan Lewat</p>
+      <h2 class="section-title">Order Sekarang, Segar Sampai Rumah</h2>
+      <p class="section-sub">Pilih platform favoritmu — semua siap kirim hari ini.</p>
+    </div>
+
+    <div class="bento reveal">
+      <a class="bento-card c-shopee" href="https://shopee.co.id" target="_blank" rel="noopener">
+        <div class="bento-glow"></div>
+        <div class="bento-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+        <div class="bento-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 8h12l-1 12H7L6 8zm3-2a3 3 0 016 0"/></svg></div>
+        <div>
+          <div class="bento-name">Shopee</div>
+          <div class="bento-meta">Official Store</div>
+        </div>
+      </a>
+
+      <a class="bento-card c-tiktok" href="https://www.tiktok.com" target="_blank" rel="noopener">
+        <div class="bento-glow"></div>
+        <div class="bento-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+        <div class="bento-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 3c.5 2 2 3.5 4 3.8v2.7c-1.5 0-2.9-.4-4-1.2v6.4a5.3 5.3 0 11-4.6-5.3v2.8a2.6 2.6 0 102.2 2.6V3h2.4z"/></svg></div>
+        <div>
+          <div class="bento-name">TikTok Shop</div>
+          <div class="bento-meta">Cash on Delivery</div>
+        </div>
+      </a>
+
+      <a class="bento-card c-grab" href="https://food.grab.com" target="_blank" rel="noopener">
+        <div class="bento-glow"></div>
+        <div class="bento-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+        <div class="bento-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 13a8 8 0 0116 0v1a2 2 0 01-2 2H6a2 2 0 01-2-2v-1zm3 3v3m10-3v3"/></svg></div>
+        <div>
+          <div class="bento-name">GrabFood</div>
+          <div class="bento-meta">Free Ongkir*</div>
+        </div>
+      </a>
+
+      <a class="bento-card c-gofood" href="https://gofood.co.id" target="_blank" rel="noopener">
+        <div class="bento-glow"></div>
+        <div class="bento-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+        <div class="bento-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 13a8 8 0 0116 0v1a2 2 0 01-2 2H6a2 2 0 01-2-2v-1zm3 3v3m10-3v3"/></svg></div>
+        <div>
+          <div class="bento-name">GoFood</div>
+          <div class="bento-meta">Diskon GoPay</div>
+        </div>
+      </a>
+
+      <a class="bento-card c-shopeefood" href="https://shopeefood.co.id" target="_blank" rel="noopener">
+        <div class="bento-glow"></div>
+        <div class="bento-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+        <div class="bento-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 13a8 8 0 0116 0v1a2 2 0 01-2 2H6a2 2 0 01-2-2v-1zm3 3v3m10-3v3"/></svg></div>
+        <div>
+          <div class="bento-name">ShopeeFood</div>
+          <div class="bento-meta">Cepat Sampai</div>
+        </div>
+      </a>
+
+      <a class="bento-card c-wa wide" href="https://wa.me/6281234567890?text=Halo%20Asinan%20Rizky%20Bogor%2C%20saya%20mau%20pesan" target="_blank" rel="noopener">
+        <div class="bento-glow"></div>
+        <div class="bento-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+        <div class="bento-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3a9 9 0 00-7.8 13.5L3 21l4.6-1.2A9 9 0 1012 3z"/></svg></div>
+        <div>
+          <div class="bento-name">WhatsApp Order</div>
+          <div class="bento-meta">Chat langsung, respon cepat</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ================= BEST SELLER MENU ================= -->
+  <section class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Best Seller</p>
+      <h2 class="section-title">Menu Favorit Pelanggan</h2>
+    </div>
+  </section>
+
+  <div class="menu-scroll reveal">
+    <div class="menu-card">
+      <div class="menu-photo"><span class="menu-badge">Favorit</span>🍉</div>
+      <div class="menu-body">
+        <div class="menu-name">Asinan Buah Segar</div>
+        <p class="menu-desc">Campuran buah tropis segar disiram kuah asam pedas khas Bogor.</p>
+        <div class="menu-foot"><span class="menu-price">Rp 15.000</span><button class="menu-add">+</button></div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-photo">🥬</div>
+      <div class="menu-body">
+        <div class="menu-name">Asinan Sayur Bogor</div>
+        <p class="menu-desc">Sayuran segar renyah dengan kuah kacang gurih pedas.</p>
+        <div class="menu-foot"><span class="menu-price">Rp 12.000</span><button class="menu-add">+</button></div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-photo"><span class="menu-badge">Best Seller</span>🥗</div>
+      <div class="menu-body">
+        <div class="menu-name">Asinan Campur Spesial</div>
+        <p class="menu-desc">Kombinasi buah &amp; sayur pilihan, porsi paling ramai dipesan.</p>
+        <div class="menu-foot"><span class="menu-price">Rp 20.000</span><button class="menu-add">+</button></div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-photo">🌶️</div>
+      <div class="menu-body">
+        <div class="menu-name">Asinan Kuah Kental</div>
+        <p class="menu-desc">Untuk pecinta pedas — kuah kacang kental extra cabai.</p>
+        <div class="menu-foot"><span class="menu-price">Rp 15.000</span><button class="menu-add">+</button></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= REVIEWS ================= -->
+  <section class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Testimoni</p>
+      <h2 class="section-title">Kata Mereka yang Sudah Coba</h2>
+    </div>
+  </section>
+
+  <div class="review-scroll reveal">
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"Kuahnya pas banget asem pedesnya, buahnya juga masih segar. Langganan tiap minggu!"</p>
+      <div class="review-person">
+        <div class="review-avatar">D</div>
+        <div><div class="review-name">Dinda</div><div class="review-loc">Bogor Tengah</div></div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"Order via GoFood sampai masih dingin dan seger. Porsi campur worth it banget."</p>
+      <div class="review-person">
+        <div class="review-avatar">R</div>
+        <div><div class="review-name">Rangga</div><div class="review-loc">Tanah Sareal</div></div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"Rasa aslinya kerasa banget, kayak beli langsung di Bogor. Recommended!"</p>
+      <div class="review-person">
+        <div class="review-avatar">S</div>
+        <div><div class="review-name">Sinta</div><div class="review-loc">Bogor Selatan</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= SOCIAL ================= -->
+  <section class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Follow Kami</p>
+      <h2 class="section-title">Update Menu &amp; Promo Terbaru</h2>
+    </div>
+
+    <div class="social-grid reveal">
+      <a class="social-card" href="https://instagram.com/asinanrizkybogor" target="_blank" rel="noopener">
+        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+        <div class="social-handle">@asinanrizkybogor</div>
+        <div class="social-sub">Instagram</div>
+      </a>
+      <a class="social-card" href="https://tiktok.com/@asinanrizkybogor" target="_blank" rel="noopener">
+        <svg class="social-icon" viewBox="0 0 24 24" fill="var(--green)"><path d="M14 3c.5 2 2 3.5 4 3.8v2.7c-1.5 0-2.9-.4-4-1.2v6.4a5.3 5.3 0 11-4.6-5.3v2.8a2.6 2.6 0 102.2 2.6V3h2.4z"/></svg>
+        <div class="social-handle">@asinanrizkybogor</div>
+        <div class="social-sub">TikTok</div>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <b>Asinan Rizky Bogor</b><br>
+  Segar, Pedas, Khas Bogor — sejak dari dapur rumah untuk kota Bogor.<br>
+  © 2026 Asinan Rizky Bogor. Semua hak dilindungi.
+</footer>
+
+<!-- ================= STICKY CTA ================= -->
+<div class="sticky-cta">
+  <div class="sticky-inner">
+    <div class="sticky-text">
+      <div class="t1">Buka sekarang</div>
+      <div class="t2">Pesan asinan segarmu</div>
+    </div>
+    <a class="sticky-btn" href="https://wa.me/6281234567890?text=Halo%20Asinan%20Rizky%20Bogor%2C%20saya%20mau%20pesan" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3a9 9 0 00-7.8 13.5L3 21l4.6-1.2A9 9 0 1012 3z"/></svg>
+      Order via WA
+    </a>
+  </div>
+</div>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
